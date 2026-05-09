@@ -1,0 +1,122 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  test:
+    name: Unity EditMode Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup test project
+        run: |
+          mkdir -p ci/Assets/Fara/FaraMultiVrmConverter
+          rsync -av \
+            --exclude='.git' \
+            --exclude='ci' \
+            --exclude='.github' \
+            --exclude='.githooks' \
+            --exclude='*.unitypackage' \
+            . ci/Assets/Fara/FaraMultiVrmConverter/
+
+      - name: Cache Unity Library
+        uses: actions/cache@v4
+        with:
+          path: ci/Library
+          key: unity-library-2022-3-${{ hashFiles('ci/Packages/manifest.json') }}
+          restore-keys: |
+            unity-library-2022-3-
+
+      - name: Run EditMode Tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ci
+          unityVersion: 2022.3.22f1
+          testMode: editmode
+          artifactsPath: test-results
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results
+
+  release:
+    name: Build and Release
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # タグ名 (例: v1.2.3) からバージョン番号を取得
+      - name: Get version
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+      - name: Setup export project
+        run: |
+          mkdir -p ci/Assets/Fara/FaraMultiVrmConverter
+          rsync -av \
+            --exclude='.git' \
+            --exclude='ci' \
+            --exclude='.github' \
+            --exclude='.githooks' \
+            --exclude='*.unitypackage' \
+            . ci/Assets/Fara/FaraMultiVrmConverter/
+
+      - name: Cache Unity Library
+        uses: actions/cache@v4
+        with:
+          path: ci/Library
+          key: unity-library-2022-3-${{ hashFiles('ci/Packages/manifest.json') }}
+          restore-keys: |
+            unity-library-2022-3-
+
+      # PackageExporter.Export を呼び出して .unitypackage を生成
+      - name: Export UnityPackage
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ci
+          unityVersion: 2022.3.22f1
+          targetPlatform: StandaloneLinux64
+          buildMethod: Fara.FaraMultiVrmConverter.Editor.PackageExporter.Export
+          customParameters: -output /github/workspace/FaraMultiVrmConverter-${{ steps.version.outputs.version }}.unitypackage
+          allowDirtyBuild: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: FaraMultiVrmConverter ${{ github.ref_name }}
+          body: |
+            ## インストール方法
+
+            ### VCC (推奨)
+            リポジトリに追加してインストールしてください。
+
+            ### 手動インストール
+            `FaraMultiVrmConverter-${{ steps.version.outputs.version }}.unitypackage` をダウンロードし、
+            Unity プロジェクトにインポートしてください。
+          files: |
+            FaraMultiVrmConverter-${{ steps.version.outputs.version }}.unitypackage
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}

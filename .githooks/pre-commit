@@ -1,0 +1,92 @@
+#!/bin/bash
+# Unity EditMode TestRunner pre-commit hook
+#
+# Setup (one-time):
+#   git config core.hooksPath .githooks
+#
+# Skip tests for a single commit:
+#   SKIP_UNITY_TESTS=1 git commit -m "..."
+
+if [ "${SKIP_UNITY_TESTS:-0}" = "1" ]; then
+  echo "⚠️  SKIP_UNITY_TESTS=1: skipping Unity tests."
+  exit 0
+fi
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+# Find Unity project root (directory containing ProjectSettings/ProjectVersion.txt)
+UNITY_PROJECT="${UNITY_PROJECT_PATH:-}"
+if [ -z "$UNITY_PROJECT" ]; then
+  dir="$(dirname "$REPO_ROOT")"
+  while [ "$dir" != "$(dirname "$dir")" ]; do
+    if [ -f "$dir/ProjectSettings/ProjectVersion.txt" ]; then
+      UNITY_PROJECT="$dir"
+      break
+    fi
+    dir="$(dirname "$dir")"
+  done
+fi
+
+if [ -z "$UNITY_PROJECT" ]; then
+  echo "⚠️  Unity project not found. Skipping pre-commit tests."
+  echo "   Set UNITY_PROJECT_PATH=/path/to/UnityProject if needed."
+  exit 0
+fi
+
+UNITY_VERSION=$(grep "m_EditorVersion:" "$UNITY_PROJECT/ProjectSettings/ProjectVersion.txt" 2>/dev/null | awk '{print $2}')
+if [ -z "$UNITY_VERSION" ]; then
+  echo "⚠️  Could not read Unity version. Skipping pre-commit tests."
+  exit 0
+fi
+
+# Platform-specific Unity executable path
+OS="$(uname -s)"
+case "$OS" in
+  Darwin)
+    UNITY_EXE="/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity"
+    ;;
+  Linux)
+    UNITY_EXE="$HOME/Unity/Hub/Editor/$UNITY_VERSION/Editor/Unity"
+    ;;
+  MINGW*|MSYS*|CYGWIN*)
+    UNITY_EXE="/c/Program Files/Unity/Hub/Editor/$UNITY_VERSION/Editor/Unity.exe"
+    ;;
+  *)
+    echo "⚠️  Unknown OS ($OS). Skipping pre-commit tests."
+    exit 0
+    ;;
+esac
+
+if [ ! -f "$UNITY_EXE" ]; then
+  echo "⚠️  Unity $UNITY_VERSION not found at: $UNITY_EXE"
+  echo "   Skipping pre-commit tests. Install Unity via Unity Hub or set UNITY_PROJECT_PATH."
+  exit 0
+fi
+
+TEST_RESULTS="$REPO_ROOT/.unity-test-results.xml"
+LOG_FILE="$REPO_ROOT/.unity-test.log"
+
+echo "🧪 Running Unity EditMode tests (Unity $UNITY_VERSION)..."
+echo "   This may take a minute. Use SKIP_UNITY_TESTS=1 to skip."
+
+"$UNITY_EXE" \
+  -batchmode \
+  -nographics \
+  -projectPath "$UNITY_PROJECT" \
+  -runTests \
+  -testPlatform EditMode \
+  -testResults "$TEST_RESULTS" \
+  -logFile "$LOG_FILE" \
+  -quit
+
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+  echo "❌ Unity tests FAILED (exit code: $EXIT_CODE)"
+  echo "   Log: $LOG_FILE"
+  echo "   Results: $TEST_RESULTS"
+  exit 1
+fi
+
+echo "✅ All Unity tests passed!"
+rm -f "$TEST_RESULTS" "$LOG_FILE"
