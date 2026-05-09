@@ -32,7 +32,7 @@ jobs:
 
       - name: Download VRChat packages
         run: |
-          curl -sL "https://packages.vrchat.com/official?download" -o /tmp/vrc_official.json
+          curl -sL "https://vrchat.github.io/packages/index.json" -o /tmp/vrc_official.json
           echo "JSON size: $(wc -c < /tmp/vrc_official.json) bytes"
           echo "Top-level keys:"
           jq 'keys' /tmp/vrc_official.json
