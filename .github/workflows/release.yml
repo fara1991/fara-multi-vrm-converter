@@ -32,7 +32,7 @@ jobs:
 
       - name: Download VRChat packages
         run: |
-          VRC_JSON=$(curl -sL "https://packages.vrchat.com/curated?download")
+          VRC_JSON=$(curl -sL "https://packages.vrchat.com/official?download")
 
           install_pkg() {
             local PKG="$1"
