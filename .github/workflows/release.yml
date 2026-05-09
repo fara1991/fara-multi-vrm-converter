@@ -49,9 +49,12 @@ jobs:
             cp -r "$PKG_DIR/." "ci/Packages/$PKG/"
           }
 
-          BASE_VER=$(echo "$VRC_JSON" | jq -r '.packages["com.vrchat.avatars"].versions["3.9.0"].dependencies["com.vrchat.base"] // "3.9.0"')
+          AVATARS_VER=$(echo "$VRC_JSON" | jq -r '[.packages["com.vrchat.avatars"].versions | keys[] | select(test("^[0-9]+\\.[0-9]+\\.[0-9]+$"))] | sort | last')
+          echo "Latest stable com.vrchat.avatars: $AVATARS_VER"
+          BASE_VER=$(echo "$VRC_JSON" | jq -r ".packages[\"com.vrchat.avatars\"].versions[\"$AVATARS_VER\"].dependencies[\"com.vrchat.base\"] // \"$AVATARS_VER\"")
+          echo "com.vrchat.base version: $BASE_VER"
           install_pkg "com.vrchat.base" "$BASE_VER"
-          install_pkg "com.vrchat.avatars" "3.9.0"
+          install_pkg "com.vrchat.avatars" "$AVATARS_VER"
 
       - name: Cache Unity Library
         uses: actions/cache@v4
