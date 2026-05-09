@@ -722,4 +722,16 @@ sysinfo.txt
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
+.claude/
+
+# CI test project generated files
+ci/Library/
+ci/Temp/
+ci/Logs/
+ci/UserSettings/
+
+# Pre-commit hook temporary files
+.unity-test-results.xml
+.unity-test.log
+
 # End of https://www.toptal.com/developers/gitignore/api/unity,rider,visualstudio,csharp

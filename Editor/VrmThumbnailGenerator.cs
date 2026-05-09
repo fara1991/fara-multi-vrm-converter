@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Fara.FaraVRMMultiConverter.Editor
+namespace Fara.FaraMultiVrmConverter.Editor
 {
     /// <summary>
     /// VRMアバターのサムネイル画像を生成するヘルパークラス
@@ -216,7 +216,7 @@ namespace Fara.FaraVRMMultiConverter.Editor
         private static void PositionCamera(Camera camera)
         {
             // アバターは原点にある前提で、標準的なバストアップ位置に固定
-            camera.transform.position = new Vector3(0, 0.7f, 1.4f);
+            camera.transform.position = new Vector3(0, 0.7f, 1.7f);
             camera.transform.LookAt(new Vector3(0, 0.7f, 0));
         }
 

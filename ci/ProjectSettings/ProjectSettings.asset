@@ -1,0 +1,378 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 24
+  productGUID: 3f76288e3e6bc60082068bf8245446aa
+  AndroidProfiler: 0
+  AndroidFilterTouchesWhenObscured: 0
+  AndroidEnableSustainedPerformanceMode: 0
+  defaultScreenOrientation: 4
+  targetDevice: 2
+  useOnDemandResources: 0
+  accelerometerFrequency: 60
+  companyName: Fara
+  productName: FaraMultiVrmConverterCI
+  defaultCursor: {fileID: 0}
+  cursorHotspot: {x: 0, y: 0}
+  m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
+  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashLogo: 1
+  m_SplashScreenOverlayOpacity: 1
+  m_SplashScreenAnimation: 1
+  m_SplashScreenLogoStyle: 1
+  m_SplashScreenDrawMode: 0
+  m_SplashScreenBackgroundAnimationZoom: 1
+  m_SplashScreenLogoAnimationZoom: 1
+  m_SplashScreenBackgroundLandscapeAspect: 1
+  m_SplashScreenBackgroundPortraitAspect: 1
+  m_SplashScreenBackgroundLandscapeUvs:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  m_SplashScreenBackgroundPortraitUvs:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  m_SplashScreenLogos: []
+  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_HolographicTrackingLossScreen: {fileID: 0}
+  defaultScreenWidth: 1024
+  defaultScreenHeight: 768
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 600
+  m_StereoRenderingPath: 0
+  m_ActiveColorSpace: 0
+  m_MTRendering: 1
+  mipStripping: 0
+  numberOfMipsStripped: 0
+  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
+  iosShowActivityIndicatorOnLoading: -1
+  androidShowActivityIndicatorOnLoading: -1
+  iosUseCustomAppBackgroundBehavior: 0
+  allowedAutorotateToPortrait: 1
+  allowedAutorotateToPortraitUpsideDown: 1
+  allowedAutorotateToLandscapeRight: 1
+  allowedAutorotateToLandscapeLeft: 1
+  useOSAutorotation: 1
+  use32BitDisplayBuffer: 1
+  preserveFramebufferAlpha: 0
+  disableDepthAndStencilBuffers: 0
+  androidStartInFullscreen: 1
+  androidRenderOutsideSafeArea: 1
+  androidUseSwappy: 1
+  androidBlitType: 0
+  androidResizableWindow: 0
+  androidDefaultWindowWidth: 1920
+  androidDefaultWindowHeight: 1080
+  androidMinimumWindowWidth: 400
+  androidMinimumWindowHeight: 300
+  androidFullscreenMode: 1
+  defaultIsNativeResolution: 1
+  macRetinaSupport: 1
+  runInBackground: 1
+  captureSingleScreen: 0
+  muteOtherAudioSources: 0
+  Prepare IOS For Recording: 0
+  Force IOS Speakers When Recording: 0
+  deferSystemGesturesMode: 0
+  hideHomeButton: 0
+  submitAnalytics: 1
+  usePlayerLog: 1
+  bakeCollisionMeshes: 0
+  forceSingleInstance: 0
+  useFlipModelSwapchain: 1
+  resizableWindow: 0
+  useMacAppStoreValidation: 0
+  macAppStoreCategory: public.app-category.games
+  gpuSkinning: 0
+  xboxPIXTextureCapture: 0
+  xboxEnableAvatar: 0
+  xboxEnableKinect: 0
+  xboxEnableKinectAutoTracking: 0
+  xboxEnableFitness: 0
+  visibleInBackground: 1
+  allowFullscreenSwitch: 1
+  fullscreenMode: 1
+  xboxEnableSpeech: 0
+  xboxAdaptivePerformance: 0
+  xboxEnableHeadOrientation: 0
+  xboxEnableGuest: 0
+  xboxEnableHeadOrientationPosition: 0
+  xboxEnableInput: 0
+  xboxOneResolution: 0
+  xboxOneSResolution: 0
+  xboxOneXResolution: 3
+  xboxOneMonoLoggingLevel: 0
+  xboxOneLoggingLevel: 1
+  xboxOneDisableEsram: 0
+  xboxOneEnableTypeOptimization: 0
+  xboxOneEnablePIXSampling: 0
+  metalFramebufferOnly: 0
+  metalEditorSupport: 1
+  metalAPIValidation: 1
+  iOSRenderExtraFrameOnPause: 0
+  iosAppleAccountId:
+  appleDeveloperTeamID:
+  iOSManualSigningProvisioningProfileUUID:
+  tvOSManualSigningProvisioningProfileUUID:
+  iOSManualSigningProvisioningProfileType: 0
+  tvOSManualSigningProvisioningProfileType: 0
+  appleEnableAutomaticSigning: 0
+  iOSRequireARKit: 0
+  iOSAutomaticallyDetectAndAddCapabilities: 1
+  appleEnableProMotion: 0
+  shaderPrecisionModel: 0
+  strictShaderVariantMatching: 0
+  hasPROVersion: 0
+  enableMetalAPI: 1
+  metaliOSSupport: 0
+  metalEditorSupportEnabled: 0
+  metaliOSForced: 0
+  framebufferDepthMemorylessMode: 0
+  markerAutoPlayback: 0
+  numBufferedAudioClips: 2
+  mobileMTRendering:
+    Android: 1
+    iPhone: 1
+    tvOS: 1
+  m_BuildTargetVRSettings: []
+  openGLRequireES31: 0
+  openGLRequireES31AEP: 0
+  openGLRequireES32: 0
+  m_TemplateCustomTags: {}
+  mobileForceMetal: 0
+  useHDRDisplay: 0
+  hdrBitDepth: 0
+  m_ColorGamuts:
+  - 0
+  targetPixelDensity: 30
+  resolutionScalingMode: 0
+  resetResolutionOnWindowResize: 0
+  androidSupportedAspectRatio: 1
+  androidMaxAspectRatio: 2.1
+  applicationIdentifier:
+    Standalone: com.Fara.FaraMultiVrmConverterCI
+  buildNumber:
+    Standalone: 0
+    iPhone: 0
+    tvOS: 0
+  AndroidBundleVersionCode: 1
+  AndroidMinSdkVersion: 22
+  AndroidTargetSdkVersion: 0
+  AndroidMaxAspectRatio: 2.1
+  androidInstallLocation: 0
+  androidLargeHeap: 0
+  androidShrinkResources: 0
+  androidBluetoothVersionCode: 0
+  AndroidMobileSubtarget: 0
+  AndroidArmeabi: 0
+  AndroidArmv7: 1
+  AndroidArm64: 1
+  AndroidX86: 0
+  AndroidX86_64: 0
+  AndroidRenderingAPI: 0
+  AndroidUnityAudioType: 0
+  AndroidMinifyWithR8: 0
+  androidRenderingJobsMode: 2
+  m_SupportedAspectRatios:
+    4:3: 1
+    5:4: 1
+    16:10: 1
+    16:9: 1
+    Others: 1
+  bundleVersion: 1.0
+  preloadedAssets: []
+  metroInputSource: 0
+  wsaTransparentSwapchain: 0
+  m_HolographicPauseOnTrackingLoss: 1
+  xboxOneDisableKinectGpuReservation: 1
+  xboxOneEnable7thCore: 1
+  vrSettings:
+    cardboard:
+      depthFormat: 0
+      enableTransitionView: 0
+    daydream:
+      depthFormat: 0
+      useSustainedPerformance: 0
+      enableVideoLayer: 0
+      useProtectedVideoMemory: 0
+      minimumSupportedHeadTracking: 0
+      maximumSupportedHeadTracking: 1
+    hololens:
+      depthFormat: 1
+      depthBufferSharingEnabled: 1
+    lumin:
+      depthFormat: 0
+      frameTiming: 0
+      enableGLCache: 0
+      glCacheMaxBlobSize: 524288
+      glCacheMaxFileSize: 10485760
+    oculus:
+      sharedDepthBuffer: 1
+      dashSupport: 1
+      lowOverheadMode: 0
+      protectedContext: 0
+      v2Signing: 1
+      enableFoveation: 0
+      foveationLevel: 0
+    windowsMR:
+      depthBufferSharingEnabled: 1
+      depthFormat: 16
+      stereoEnabled: 0
+  isWsaHolographic: 0
+  enableFrameTimingStats: 0
+  enableOpenGLProfilerGPURecorders: 1
+  useHDRCubemapEncoding: 1
+  m_XRSettings:
+    playerTrackingType: 1
+    depthFormat: 2
+    renderingPath: 0
+    useOcclusionMesh: 1
+    dashSupport: 0
+    stereoRenderingMode: 0
+    protectedContext: 0
+    enableVideoLayer: 0
+    useProtectedVideoMemory: 0
+  m_HolographicPauseOnTrackingLoss: 1
+  scriptingDefineSymbols:
+    1: ''
+  additionalCompilerArguments:
+    1: []
+  platformArchitecture:
+    Android: 1
+  scriptingBackend:
+    Android: 0
+  il2cppCompilerConfiguration:
+    Android: 0
+  managedStrippingLevel:
+    Android: 1
+  incrementalIl2cppBuild:
+    Android: 0
+  suppressCommonWarnings: 1
+  allowUnsafeCode: 0
+  useDeterministicCompilation: 1
+  useReferenceAssemblies: 1
+  enableRoslynAnalyzers: 1
+  selectedPlatform: 0
+  additionalIl2CppArgs:
+  scriptingRuntimeVersion: 1
+  gcIncremental: 1
+  assemblyVersionValidation: 1
+  gcWBarrierValidation: 0
+  apiCompatibilityLevelPerPlatform: {}
+  m_RenderingPath: 1
+  m_MobileRenderingPath: 1
+  metroPackageName: FaraMultiVrmConverterCI
+  metroPackageVersion:
+  metroCertificatePath:
+  metroCertificatePassword:
+  metroCertificateSubject:
+  metroCertificateIssuer:
+  metroCertificateNotAfter: 0000000000000000
+  metroApplicationDescription: FaraMultiVrmConverterCI
+  wsaImages: {}
+  metroTileShortName:
+  metroTileShowName: 0
+  metroMediumTileShowName: 0
+  metroLargeTileShowName: 0
+  metroWideTileShowName: 0
+  metroSupportStreamingInstall: 0
+  metroLastRequiredScene: 0
+  metroDefaultTileSize: 1
+  metroTileForegroundText: 2
+  metroTileBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628, a: 0}
+  metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628, a: 1}
+  metroSplashScreenUseBackgroundColor: 0
+  platformCapabilities: {}
+  metroFTAName:
+  metroFTAFileTypes: []
+  metroProtocolName:
+  metroCompilationOverrides: 1
+  m_XboxSpeechDB: 0
+  m_XboxEnableHeadOrientation: 0
+  m_XboxEnableGuest: 0
+  m_XboxEnableKinect: 0
+  m_XboxEnableKinectAutoTracking: 0
+  m_XboxEnableFitness: 0
+  m_XboxEnableSpeech: 0
+  m_XboxSpeechDB: 0
+  m_XboxOneResolution: 0
+  m_XboxOneSResolution: 0
+  m_XboxOneXResolution: 3
+  m_XboxOneMonoLoggingLevel: 0
+  m_XboxOneLoggingLevel: 1
+  m_XboxOneDisableEsram: 0
+  m_XboxOneEnableTypeOptimization: 0
+  m_XboxOneEnablePIXSampling: 0
+  m_HoloLensSharingMode: 0
+  m_WsaDefaultPackageName:
+  m_WsaSetDefaultPackageName: 0
+  PS4NPAgeRating: 12
+  PS4NPTitleSecret:
+  PS4NPTrophyPackPath:
+  PS4ParentalLevel: 11
+  PS4ContentID:
+  PS4Category: 0
+  PS4MasterVersion: 01.00
+  PS4AppVersion: 01.00
+  PS4AppType: 0
+  PS4ParamSfxPath:
+  PS4VideoOutPixelFormat: 0
+  PS4VideoOutInitialWidth: 1920
+  PS4VideoOutBaseModeInitialWidth: 1920
+  PS4VideoOutReprojectionRate: 60
+  PS4PronunciationXMLPath:
+  PS4PronunciationSIGPath:
+  PS4BackgroundImagePath:
+  PS4StartupImagePath:
+  PS4StartupImagesFolder:
+  PS4IconImagesFolder:
+  PS4SaveDataImagePath:
+  PS4SdkOverride:
+  PS4BGMPath:
+  PS4ShareFilePath:
+  PS4ShareOverlayImagePath:
+  PS4PrivacyGuardImagePath:
+  PS4ExtraSceSysFile:
+  PS4NPtitleDatPath:
+  PS4KeepPackage: 0
+  PS4KeystoneFile:
+  PS4SubscriptionService: 0
+  PS4ReprojectionSupport: 0
+  PS4UseAudio3dBackend: 0
+  PS4SocialScreenEnabled: 0
+  PS4ScriptOptimizationLevel: 0
+  PS4AudioMastingChannelCount: 0
+  PS4EnableApplicationExit: 0
+  PS4RemotePlayKeyAssignment: -1
+  PS4EnterButtonAssignment: 1
+  PS4ApplicationParam1: 0
+  PS4ApplicationParam2: 0
+  PS4ApplicationParam3: 0
+  PS4ApplicationParam4: 0
+  PS4DownloadDataSize: 0
+  PS4GarlicHeapSize: 2048
+  PS4ProGarlicHeapSize: 2560
+  playerPrefsSupport: 0
+  enableApplicationExitCallback: 0
+  PS4DLC: 0
+  PS4AudioSlotCount: 32
+  PS4PROSupport: 0
+  PS4EnableIncompatibilityWarning: 0
+  PS4DisableAutoHideSplash: 0
+  PS4videoRecordingFeaturesUsed: 0
+  PS4contentSearchFeaturesUsed: 0
+  PS4CompatibilityPS5: 0
+  PS4AllowPS5Detection: 0
+  PS4GPU800MHz: 1
+  PS4attribExclusiveVR: 0
+  PS4attribCPUBudget: 0
+  PS4GpuDriverVersion: 0
+  PS4PRAdjustPriority: 0
+  PS4PRAdjustAffinityMask: 0

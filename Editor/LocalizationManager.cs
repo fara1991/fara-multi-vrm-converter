@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace Fara.FaraVRMMultiConverter.Editor
+namespace Fara.FaraMultiVrmConverter.Editor
 {
     /// <summary>
     /// 多言語対応を管理するクラス

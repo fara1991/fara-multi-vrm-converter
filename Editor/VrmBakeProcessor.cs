@@ -4,7 +4,7 @@ using System.Linq;
 using nadena.dev.ndmf;
 using UnityEngine;
 
-namespace Fara.FaraVRMMultiConverter.Editor
+namespace Fara.FaraMultiVrmConverter.Editor
 {
     /// <summary>
     /// ベイク処理のインターフェース
