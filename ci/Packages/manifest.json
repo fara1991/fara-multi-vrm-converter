@@ -4,14 +4,14 @@
     "com.vrmc.univrm": "0.128.1",
     "jp.pokemori.univrm-extensions": "10.4.0",
     "nadena.dev.ndmf": "1.9.4",
-    "com.vrchat.avatars": "3.9.0"
+    "com.vrchat.base": "file:com.vrchat.base",
+    "com.vrchat.avatars": "file:com.vrchat.avatars"
   },
   "scopedRegistries": [
     {
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
-        "com.vrchat",
         "com.vrmc",
         "nadena.dev",
         "jp.pokemori"

@@ -30,6 +30,29 @@ jobs:
             --exclude='*.unitypackage' \
             . ci/Assets/Fara/FaraMultiVrmConverter/
 
+      - name: Download VRChat packages
+        run: |
+          VRC_JSON=$(curl -sL "https://packages.vrchat.com/curated?download")
+
+          install_pkg() {
+            local PKG="$1"
+            local VER="$2"
+            local URL
+            URL=$(echo "$VRC_JSON" | jq -r ".packages[\"$PKG\"].versions[\"$VER\"].url")
+            echo "Installing $PKG@$VER from $URL"
+            curl -sL "$URL" -o "/tmp/${PKG}.zip"
+            mkdir -p "/tmp/${PKG}-extract"
+            unzip -q "/tmp/${PKG}.zip" -d "/tmp/${PKG}-extract"
+            local PKG_DIR
+            PKG_DIR=$(find "/tmp/${PKG}-extract" -name "package.json" -maxdepth 3 | head -1 | xargs dirname)
+            mkdir -p "ci/Packages/$PKG"
+            cp -r "$PKG_DIR/." "ci/Packages/$PKG/"
+          }
+
+          BASE_VER=$(echo "$VRC_JSON" | jq -r '.packages["com.vrchat.avatars"].versions["3.9.0"].dependencies["com.vrchat.base"] // "3.9.0"')
+          install_pkg "com.vrchat.base" "$BASE_VER"
+          install_pkg "com.vrchat.avatars" "3.9.0"
+
       - name: Cache Unity Library
         uses: actions/cache@v4
         with:
