@@ -32,13 +32,18 @@ jobs:
 
       - name: Download VRChat packages
         run: |
-          VRC_JSON=$(curl -sL "https://packages.vrchat.com/official?download")
+          curl -sL "https://packages.vrchat.com/official?download" -o /tmp/vrc_official.json
+          echo "JSON size: $(wc -c < /tmp/vrc_official.json) bytes"
+          echo "Top-level keys:"
+          jq 'keys' /tmp/vrc_official.json
+          echo "Package keys (first 10):"
+          jq '.packages | keys | .[0:10]' /tmp/vrc_official.json
 
           install_pkg() {
             local PKG="$1"
             local VER="$2"
             local URL
-            URL=$(echo "$VRC_JSON" | jq -r ".packages[\"$PKG\"].versions[\"$VER\"].url")
+            URL=$(jq -r ".packages[\"$PKG\"].versions[\"$VER\"].url" /tmp/vrc_official.json)
             echo "Installing $PKG@$VER from $URL"
             curl -sL "$URL" -o "/tmp/${PKG}.zip"
             mkdir -p "/tmp/${PKG}-extract"
@@ -49,9 +54,9 @@ jobs:
             cp -r "$PKG_DIR/." "ci/Packages/$PKG/"
           }
 
-          AVATARS_VER=$(echo "$VRC_JSON" | jq -r '[.packages["com.vrchat.avatars"].versions | keys[] | select(test("^[0-9]+\\.[0-9]+\\.[0-9]+$"))] | sort | last')
+          AVATARS_VER=$(jq -r '[.packages["com.vrchat.avatars"].versions | keys[] | select(test("^[0-9]+\\.[0-9]+\\.[0-9]+$"))] | sort | last' /tmp/vrc_official.json)
           echo "Latest stable com.vrchat.avatars: $AVATARS_VER"
-          BASE_VER=$(echo "$VRC_JSON" | jq -r ".packages[\"com.vrchat.avatars\"].versions[\"$AVATARS_VER\"].dependencies[\"com.vrchat.base\"] // \"$AVATARS_VER\"")
+          BASE_VER=$(jq -r ".packages[\"com.vrchat.avatars\"].versions[\"$AVATARS_VER\"].dependencies[\"com.vrchat.base\"] // \"$AVATARS_VER\"" /tmp/vrc_official.json)
           echo "com.vrchat.base version: $BASE_VER"
           install_pkg "com.vrchat.base" "$BASE_VER"
           install_pkg "com.vrchat.avatars" "$AVATARS_VER"
