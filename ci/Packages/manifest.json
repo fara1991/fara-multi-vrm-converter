@@ -8,16 +8,10 @@
   },
   "scopedRegistries": [
     {
-      "name": "VRChat",
-      "url": "https://packages.vrchat.com/curated?download",
-      "scopes": [
-        "com.vrchat"
-      ]
-    },
-    {
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
+        "com.vrchat",
         "com.vrmc",
         "nadena.dev",
         "jp.pokemori"
