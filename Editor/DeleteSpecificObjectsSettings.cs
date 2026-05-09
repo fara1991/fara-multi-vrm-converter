@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fara.FaraVRMMultiConverter.Editor
+namespace Fara.FaraMultiVrmConverter.Editor
 {
     [CreateAssetMenu(fileName = "DeleteSpecificObjectsSettings", menuName = "Fara/DeleteSpecificObjectsSettings")]
     public class DeleteSpecificObjectsSettings : ScriptableObject

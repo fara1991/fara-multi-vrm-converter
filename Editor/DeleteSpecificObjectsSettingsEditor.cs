@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Fara.FaraVRMMultiConverter.Editor
+namespace Fara.FaraMultiVrmConverter.Editor
 {
     /// <summary>
     /// DeleteSpecificObjectsSettingsのカスタムエディタ

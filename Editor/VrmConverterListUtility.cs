@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Fara.FaraVRMMultiConverter.Editor
+namespace Fara.FaraMultiVrmConverter.Editor
 {
     public static class VrmConverterListUtility
     {
