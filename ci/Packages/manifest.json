@@ -5,7 +5,10 @@
     "jp.pokemori.univrm-extensions": "10.4.0",
     "nadena.dev.ndmf": "1.9.4",
     "com.vrchat.base": "file:com.vrchat.base",
-    "com.vrchat.avatars": "file:com.vrchat.avatars"
+    "com.vrchat.avatars": "file:com.vrchat.avatars",
+    "com.unity.modules.androidjni": "1.0.0",
+    "com.unity.modules.video": "1.0.0",
+    "com.unity.modules.imageconversion": "1.0.0"
   },
   "scopedRegistries": [
     {
