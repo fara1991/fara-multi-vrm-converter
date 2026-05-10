@@ -17,6 +17,7 @@ MonoBehaviour:
   - HeartBeat_OSC Variant
   - white feather*
   - AfterGlow
+  - Colider*
   - Collider*
   - PocketItem
   - AvatarPoseSystem
@@ -35,5 +36,6 @@ MonoBehaviour:
   - '*menu*'
   - floor*
   - "PB\u7CFB\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306FVRM\u5909\u63DB\u5F8C\u624B\u52D5\u3067\u524A\u9664"
+  - Violin_Gimmiks
   - "PhyzBone\u7CFB\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306FVRM\u5909\u63DB\u5F8C\u624B\u52D5\u3067\u524A\u9664"
   useRegex: 1
