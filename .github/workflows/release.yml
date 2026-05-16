@@ -95,7 +95,13 @@ jobs:
             ## インストール方法
 
             ### VCC (推奨)
-            リポジトリに追加してインストールしてください。
+            以下のURLをVCCに追加してインストールしてください。
+
+            ```
+            https://fara1991.github.io/fara-multi-vrm-converter/index.json
+            ```
+
+            追加手順: VCC を開く → Settings → Packages → Add Repository → 上記URLを入力
 
             ### 手動インストール
             `FaraMultiVrmConverter-${{ steps.version.outputs.version }}.unitypackage` をダウンロードし、

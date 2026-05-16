@@ -1,0 +1,61 @@
+name: Update VPM Listing
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  update-listing:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch existing index.json
+        run: |
+          curl -sf "https://raw.githubusercontent.com/${{ github.repository }}/gh-pages/index.json" \
+            -o existing-index.json || echo "No existing index.json found"
+
+      - name: Generate VPM listing
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          OWNER="${{ github.repository_owner }}"
+          REPO_NAME=$(basename "${{ github.repository }}")
+          DOWNLOAD_URL="https://github.com/${{ github.repository }}/releases/download/$GITHUB_REF_NAME/FaraMultiVrmConverter-${VERSION}.unitypackage"
+
+          PACKAGE_ENTRY=$(jq \
+            --arg url "$DOWNLOAD_URL" \
+            --arg ver "$VERSION" \
+            '. + {url: $url, version: $ver}' \
+            package.json)
+
+          if [ -f existing-index.json ]; then
+            INDEX=$(cat existing-index.json)
+          else
+            INDEX=$(jq -n \
+              --arg name "Fara VPM Repository" \
+              --arg id "com.fara.vpm" \
+              --arg url "https://${OWNER}.github.io/${REPO_NAME}/index.json" \
+              --arg authorName "Fara" \
+              --arg authorUrl "https://github.com/${OWNER}" \
+              '{name: $name, id: $id, url: $url, author: {name: $authorName, url: $authorUrl}, packages: {}}')
+          fi
+
+          PACKAGE_ID=$(jq -r '.name' package.json)
+          INDEX=$(echo "$INDEX" | jq \
+            --arg pkgid "$PACKAGE_ID" \
+            --arg ver "$VERSION" \
+            --argjson entry "$PACKAGE_ENTRY" \
+            '.packages[$pkgid].versions[$ver] = $entry')
+
+          mkdir -p public
+          echo "$INDEX" | jq '.' > public/index.json
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: public
+          keep_files: true
